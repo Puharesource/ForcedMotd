@@ -10,46 +10,43 @@ import net.md_5.bungee.config.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Set;
 
-public class Main extends Plugin
-{
-    private Configuration config;
-    private Configuration bungeeConfig;
+public class Main extends Plugin {
     public static Map<String, ForcedServer> serverMap;
     public static Map<String, String> forcedHostsMap;
+    private Configuration config;
+    private Configuration bungeeConfig;
 
     @Override
-    public void onEnable()
-    {
+    public void onEnable() {
         loadConfig();
 
         getProxy().getPluginManager().registerListener(this, new ListenerPing());
         getProxy().getPluginManager().registerCommand(this, new CommandReload(this));
     }
 
-    public void loadConfig()
-    {
+    public void loadConfig() {
         if (!getDataFolder().exists()) getDataFolder().mkdir();
 
         File file = new File(getDataFolder(), "config.yml");
 
-        try
-        {
+        try {
             bungeeConfig = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File("config.yml"));
             if (!file.exists()) Files.copy(getResourceAsStream("config.yml"), file.toPath());
 
             config = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(getDataFolder(), "config.yml"));
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
         serverMap = new HashMap<>();
         forcedHostsMap = new HashMap<>();
 
-        for(String serverName : (Set<String>)((Map)getConfig().get("forced_servers")).keySet())
-        {
+        for (String serverName : (Set<String>) ((Map) getConfig().get("forced_servers")).keySet()) {
             getLogger().info("Loading config for server: " + serverName);
             serverMap.put(serverName, new ForcedServer(this, serverName));
         }
@@ -59,8 +56,7 @@ public class Main extends Plugin
 
     }
 
-    public Configuration getConfig()
-    {
+    public Configuration getConfig() {
         return config;
     }
 }
