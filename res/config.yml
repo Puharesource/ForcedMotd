@@ -1,9 +1,0 @@
-forced_servers:
-  server1:
-    update_on_ping: true
-    force_motd: true
-    force_icon: true
-  server2:
-    update_on_ping: false
-    force_motd: false
-    force_icon: true
