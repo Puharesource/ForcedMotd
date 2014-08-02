@@ -20,7 +20,7 @@
 
     <dependencies>
         <dependency>
-            <systemPath>${project.baseUri}/lib/bungeecord.jar</systemPath>
+            <systemPath>${project.basedir}${file.separator}lib${file.separator}bungeecord.jar</systemPath>
             <groupId>org.spigotmc</groupId>
             <artifactId>bungeecord</artifactId>
             <version>1.7-SNAPSHOT</version>
