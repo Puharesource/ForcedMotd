@@ -1,0 +1,5 @@
+name: ForcedMotd
+version: 0.0.1
+author: Puharesource
+
+main: io.puharesource.bungeecord.forcedmotd.Main

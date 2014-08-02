@@ -5,6 +5,7 @@ import net.md_5.bungee.api.Callback;
 import net.md_5.bungee.api.Favicon;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.config.ServerInfo;
+import net.md_5.bungee.config.Configuration;
 
 public class ForcedServer {
     private String name;
@@ -17,9 +18,11 @@ public class ForcedServer {
     public ForcedServer(Main plugin, String name) {
         this.name = name;
 
-        updateOnPing = plugin.getConfig().getBoolean("forced_servers." + name + ".update_on_ping");
-        isForcingMotd = plugin.getConfig().getBoolean("forced_servers." + name + ".force_motd");
-        isForcingServerIcon = plugin.getConfig().getBoolean("forced_servers." + name + ".force_icon");
+        Configuration section = plugin.getConfig().getSection("forced_servers." + name);
+
+        updateOnPing = section.getBoolean("update_on_ping");
+        isForcingMotd = section.getBoolean("force_motd");
+        isForcingServerIcon = section.getBoolean("force_icon");
 
         updateInfo();
     }
