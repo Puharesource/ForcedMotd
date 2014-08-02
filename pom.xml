@@ -18,30 +18,13 @@
         <target>1.7</target>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>bungeecord</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
-            <groupId>net.md-5</groupId>
-            <artifactId>bungeecord-api</artifactId>
+            <systemPath>${project.basedir}/lib/bungeecord.jar</systemPath>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>bungeecord</artifactId>
             <version>1.7-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.md-5</groupId>
-            <artifactId>bungeecord-protocol</artifactId>
-            <version>1.7-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>net.md-5</groupId>
-            <artifactId>bungeecord-proxy</artifactId>
-            <version>1.4.7-SNAPSHOT</version>
+            <scope>system</scope>
         </dependency>
     </dependencies>
 </project>
